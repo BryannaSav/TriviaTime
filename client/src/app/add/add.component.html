@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+  <body>
+    <a [routerLink]="['/home']">Home</a><span>|</span>
+    <a [routerLink]="['/add']">Add a Question</a><span>|</span>
+    <a href="/logout">Logout</a><br><br>
+    <h1>New Question</h1>
+
+    <form (submit)="create_trivia(); triviaForm.resetForm()" #triviaForm="ngForm">
+
+      <label name="question">Question: </label>
+      <input type="text" name="question" 
+      required  
+      minlength="15" 
+      maxlength="200" 
+      [(ngModel)]="trivia.question" 
+      #question="ngModel"><br>
+      <span style="color:red" *ngIf="!question.valid && question.dirty">Question is required, and must be 15 characters long.</span><br>
+
+      <label name="correct">Correct Answer: </label>
+      <input type="text" name="correct" 
+      required 
+      [(ngModel)]="trivia.correct" 
+      #correct="ngModel"><br>
+      <span style="color:red" *ngIf="!correct.valid && correct.dirty">Correct answer is required</span><br>
+
+      <label name="fakeone">Fake Answer 1: </label>
+      <input type="text" name="fakeone" 
+      required 
+      [(ngModel)]="trivia.fakeone" 
+      #fakeone="ngModel"><br>
+      <span style="color:red" *ngIf="!fakeone.valid && fakeone.dirty">Fake answer 1 answer is required</span><br>
+
+      <label name="faketwo">Fake Answer 2: </label>
+      <input type="text" name="faketwo" 
+      required 
+      [(ngModel)]="trivia.faketwo" 
+      #faketwo="ngModel"><br>
+      <span style="color:red" *ngIf="!faketwo.valid && faketwo.dirty">Fake answer 2 answer is required</span><br>
+      
+      <input type="submit" value="submit"  [disabled]="!triviaForm.valid"> 
+    </form> 
+    <button (click)="gohome()">Cancel</button>
+  </body>
+</html>

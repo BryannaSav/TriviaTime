@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+  <body>
+    <a [routerLink]="['/home']">Home</a><span>|</span>
+    <a [routerLink]="['/add']">Add a Question</a><span>|</span>
+    <a href="/logout">Logout</a><br><br>
+
+    <div>
+      <button (click)="gotoTrivia()">Play</button>
+      <p>Click the button above to start the trivia game.</p>
+    </div>
+    <p>Search:</p>
+    <table border="1">
+      <tr>
+        <th>Name</th>
+        <th>Score</th>
+        <th>Percentage</th>
+      </tr>
+      <tr *ngFor="let user of users">
+        <td>{{user.name}}</td>
+        <td>{{user.wins}} / {{user.games}}</td>
+        <td>{{user.percentage | percent}}</td>
+      </tr>
+    </table>
+  </body>
+</html>
